@@ -1,10 +1,11 @@
 import type { Metadata, Viewport } from "next";
+import { Sprite } from "@/components/Sprite";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Pivot — find your nearest AI role",
+  title: "Pivot — find the line you're already on",
   description:
-    "Pivot stress-tests the skills on your résumé, then matches your verified skill vector against real AI job postings you can actually hold.",
+    "Most advice guesses where you are. Pivot tests it — then maps the shortest real route to a job you can actually hold.",
 };
 
 export const viewport: Viewport = {
@@ -15,7 +16,10 @@ export const viewport: Viewport = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body className="min-h-screen antialiased">{children}</body>
+      <body>
+        <Sprite />
+        {children}
+      </body>
     </html>
   );
 }

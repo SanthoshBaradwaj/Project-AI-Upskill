@@ -1,65 +1,635 @@
-@import "tailwindcss";
+/* Pivot UI spec v0.4 — design tokens. These are the only colours in the product. */
 
-@theme {
-  --color-ink: #0b0f14;
-  --color-ink-2: #121821;
-  --color-ink-3: #1a2230;
-  --color-line: #26313f;
-  --color-fog: #8b9bb0;
-  --color-chalk: #e8eef5;
-  --color-claim: #7c8da3;
-  --color-verified: #34d399;
-  --color-warn: #fbbf24;
-  --color-hot: #f87171;
-  --color-brand: #60a5fa;
+:root {
+  --void: #100c1c; /* deep violet-black — text, borders, dark fields */
+  --paper: #f5f2ea; /* warm bone — page ground */
+  --white: #fffdf8; /* raised card surfaces */
+  --volt: #6034ff; /* electric violet — brand, primary action, Deep line */
+  --gold: #ffb020; /* EARNED ONLY */
+  --rose: #ff3d71; /* Sprint line, error/incorrect */
+  --teal: #00c2a8; /* Lateral line */
+  --mute: #7a7391; /* secondary text */
+  --hair: #ded8cc; /* inactive borders, empty segments */
 
-  --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas, monospace;
+  --sans: "Helvetica Neue", Inter, system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
 
 html,
 body {
-  background: var(--color-ink);
-  color: var(--color-chalk);
-  font-family: var(--font-sans);
+  margin: 0;
+  padding: 0;
+  background: var(--paper);
+  color: var(--void);
+  font-family: var(--sans);
+  font-size: 15px;
+  line-height: 1.5;
   -webkit-font-smoothing: antialiased;
 }
 
-* {
-  box-sizing: border-box;
+h1,
+h2,
+h3,
+p,
+ul,
+ol,
+figure {
+  margin: 0;
 }
 
-@keyframes riseIn {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+ul {
+  padding: 0;
+  list-style: none;
 }
 
-.rise {
-  animation: riseIn 0.35s ease-out both;
+/* Radius is 0 everywhere, including buttons and inputs — defeat UA styles. */
+button,
+input,
+select,
+textarea {
+  border-radius: 0;
+  font: inherit;
+  color: inherit;
 }
 
-@keyframes pulseSoft {
+button {
+  cursor: pointer;
+}
+
+:focus-visible {
+  outline: 3px solid var(--volt);
+  outline-offset: 3px;
+}
+
+/* ---------------- type scale ---------------- */
+
+h1 {
+  font-size: clamp(38px, 8vw, 76px);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  line-height: 0.98;
+}
+h2 {
+  font-size: clamp(26px, 4.4vw, 40px);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  line-height: 0.98;
+}
+h3 {
+  font-size: 17px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+}
+
+.tiny {
+  font-size: 12.5px;
+  line-height: 1.45;
+}
+
+.mono {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.muted {
+  color: var(--mute);
+}
+
+/* ---------------- layout ---------------- */
+
+.wrap {
+  max-width: 940px;
+  margin: 0 auto;
+  padding: 0 16px 100px;
+}
+
+.card {
+  border: 2px solid var(--void);
+  background: var(--white);
+  padding: 24px;
+}
+
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--mute);
+  margin-bottom: 14px;
+}
+.eyebrow svg {
+  width: 14px;
+  height: 14px;
+}
+
+/* ---------------- progress rail ---------------- */
+
+.rail {
+  position: sticky;
+  top: 0;
+  z-index: 60;
+  background: var(--paper);
+  border-bottom: 2px solid var(--void);
+}
+.rail-in {
+  max-width: 940px;
+  margin: 0 auto;
+  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+  gap: 22px;
+}
+.lockup {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  flex-shrink: 0;
+}
+.lockup svg {
+  width: 28px;
+  height: 28px;
+}
+.lockup span {
+  font-family: var(--mono);
+  font-size: 13px;
+  letter-spacing: 0.24em;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.track {
+  flex: 1;
+  position: relative;
+  height: 20px;
+  min-width: 60px;
+}
+.track:before {
+  content: "";
+  position: absolute;
+  left: 5px;
+  right: 5px;
+  top: 8px;
+  height: 3px;
+  background: var(--hair);
+}
+.track .fill {
+  position: absolute;
+  left: 5px;
+  top: 8px;
+  height: 3px;
+  background: var(--volt);
+  transition: width 0.45s ease;
+}
+.stops {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.stop {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--paper);
+  border: 2.5px solid var(--hair);
+  z-index: 1;
+}
+.stop.done {
+  background: var(--volt);
+  border-color: var(--volt);
+}
+.stop.now {
+  background: var(--paper);
+  border-color: var(--volt);
+  width: 14px;
+  height: 14px;
+  box-shadow: 0 0 0 4px rgba(96, 52, 255, 0.18);
+}
+
+/* ---------------- buttons ---------------- */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  border: 2px solid var(--void);
+  background: var(--void);
+  color: var(--paper);
+  padding: 14px 24px;
+  font-weight: 700;
+  font-size: 15px;
+  transition:
+    background 0.2s,
+    border-color 0.2s,
+    transform 0.12s,
+    box-shadow 0.12s;
+}
+.btn:hover:not(:disabled) {
+  background: var(--volt);
+  border-color: var(--volt);
+}
+.btn:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.btn.go {
+  background: var(--volt);
+  border-color: var(--void);
+  box-shadow: 4px 4px 0 var(--void);
+}
+.btn.go:hover:not(:disabled) {
+  background: var(--gold);
+  color: var(--void);
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0 var(--void);
+}
+
+.btn.ghost {
+  background: transparent;
+  color: var(--void);
+}
+.btn.ghost:hover:not(:disabled) {
+  background: var(--void);
+  color: var(--paper);
+}
+
+.btn svg {
+  width: 16px;
+  height: 16px;
+}
+
+.linkish {
+  background: none;
+  border: 0;
+  padding: 0;
+  font-size: 13.5px;
+  color: var(--mute);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.linkish:hover {
+  color: var(--void);
+}
+
+/* ---------------- earned segments ---------------- */
+
+.segs {
+  display: flex;
+  gap: 3px;
+}
+.seg {
+  height: 11px;
+  flex: 1;
+  border: 2px solid var(--hair);
+}
+.seg.on {
+  background: var(--gold);
+  border-color: var(--gold);
+}
+.seg.need {
+  border-color: var(--void);
+  border-style: dashed;
+}
+
+/* ---------------- answer cards ---------------- */
+
+.ans {
+  border: 2px solid var(--hair);
+  background: var(--paper);
+  padding: 15px 16px;
+  text-align: left;
+  font-size: 14.5px;
+  display: flex;
+  gap: 14px;
+  box-shadow: 0 4px 0 var(--hair);
+  width: 100%;
+  transition:
+    border-color 0.15s,
+    box-shadow 0.15s,
+    transform 0.12s,
+    background 0.15s;
+}
+.ans:hover:not(:disabled) {
+  border-color: var(--volt);
+  box-shadow: 0 4px 0 var(--volt);
+  transform: translateY(-1px);
+}
+.ans.right {
+  border-color: var(--gold);
+  box-shadow: 0 4px 0 var(--gold);
+  background: rgba(255, 176, 32, 0.13);
+}
+.ans.wrong {
+  border-color: var(--rose);
+  box-shadow: 0 4px 0 var(--rose);
+  background: rgba(255, 61, 113, 0.09);
+}
+.ans .key {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--mute);
+  font-weight: 700;
+  flex-shrink: 0;
+  padding-top: 2px;
+}
+
+/* ---------------- skill chips ---------------- */
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  border: 2px solid var(--hair);
+  background: var(--paper);
+  padding: 8px 12px;
+  font-size: 13.5px;
+  font-weight: 600;
+  transition:
+    border-color 0.15s,
+    opacity 0.15s;
+}
+.chip:hover {
+  border-color: var(--void);
+}
+.chip .lvl {
+  font-family: var(--mono);
+  font-size: 9.5px;
+  color: var(--mute);
+  font-weight: 400;
+}
+.chip .x {
+  font-family: var(--mono);
+  font-size: 13px;
+  color: var(--mute);
+}
+.chip:hover .x {
+  color: var(--rose);
+}
+.chip.gone {
+  opacity: 0.3;
+  text-decoration: line-through;
+}
+.chip.sel {
+  background: var(--volt);
+  color: #fff;
+  border-color: var(--volt);
+}
+.chip.sel .lvl {
+  color: rgba(255, 255, 255, 0.75);
+}
+
+/* ---------------- fields ---------------- */
+
+.field {
+  width: 100%;
+  border: 2px solid var(--void);
+  background: var(--white);
+  padding: 12px 14px;
+  font-size: 14.5px;
+}
+.field::placeholder {
+  color: var(--mute);
+}
+
+.flabel {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--mute);
+  display: block;
+  margin-bottom: 9px;
+}
+
+/* ---------------- quiz progress ---------------- */
+
+.qbar {
+  display: flex;
+  gap: 4px;
+}
+.qbar i {
+  flex: 1;
+  height: 6px;
+  background: transparent;
+  border: 2px solid var(--hair);
+  transition:
+    background 0.3s,
+    border-color 0.3s;
+}
+.qbar i.done {
+  background: var(--gold);
+  border-color: var(--gold);
+}
+.qbar i.now {
+  background: var(--volt);
+  border-color: var(--volt);
+}
+
+/* ---------------- station list ---------------- */
+
+.stn {
+  display: flex;
+  gap: 14px;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--hair);
+  align-items: baseline;
+}
+.stn .no {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--mute);
+  width: 62px;
+  flex-shrink: 0;
+}
+.stn .ti {
+  font-weight: 700;
+  font-size: 14.5px;
+}
+.stn .de {
+  font-size: 13px;
+  color: var(--mute);
+}
+.stn .hr {
+  font-family: var(--mono);
+  font-size: 10.5px;
+  color: var(--mute);
+  margin-left: auto;
+  padding-left: 12px;
+  flex-shrink: 0;
+}
+
+/* ---------------- route tabs ---------------- */
+
+.tab {
+  border: 2px solid var(--hair);
+  background: var(--paper);
+  padding: 10px 15px;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  font-size: 13.5px;
+  font-weight: 700;
+  transition:
+    border-color 0.15s,
+    background 0.15s,
+    color 0.15s;
+}
+.tab .dot {
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.tab[aria-selected="true"] {
+  border-color: var(--void);
+  background: var(--void);
+  color: var(--paper);
+}
+.tab .m {
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 400;
+  opacity: 0.65;
+}
+
+/* ---------------- metro map ---------------- */
+
+.metro .ln {
+  fill: none;
+  stroke-width: 8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.metro .ghost {
+  opacity: 0.14;
+}
+.metro .st {
+  fill: var(--void);
+  stroke-width: 4;
+}
+.metro .dash {
+  stroke-dasharray: 1 11;
+  stroke-linecap: round;
+  stroke-width: 6;
+  opacity: 0.6;
+}
+.metro .lbl {
+  font-family: var(--mono);
+  font-size: 10.5px;
+  font-weight: 700;
+  fill: #ede9f5;
+}
+.metro .sub {
+  font-family: var(--mono);
+  font-size: 8.5px;
+  fill: #8a82a8;
+  letter-spacing: 0.1em;
+}
+
+/* ---------------- dropzone ---------------- */
+
+.drop {
+  border: 3px dashed var(--hair);
+  background: var(--white);
+  padding: 52px 24px;
+  text-align: center;
+  width: 100%;
+  transition:
+    border-color 0.2s,
+    background 0.2s;
+}
+.drop:hover {
+  border-color: var(--volt);
+  background: rgba(96, 52, 255, 0.04);
+}
+
+/* ---------------- misc ---------------- */
+
+.pulse {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--volt);
+  display: inline-block;
+  animation: pulseDot 1.3s ease-in-out infinite;
+}
+@keyframes pulseDot {
   0%,
   100% {
-    opacity: 0.45;
+    opacity: 0.25;
   }
   50% {
     opacity: 1;
   }
 }
 
-.pulse-soft {
-  animation: pulseSoft 1.4s ease-in-out infinite;
+.bggen {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--mute);
+}
+
+@keyframes rowIn {
+  from {
+    opacity: 0;
+    transform: translateX(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+.readrow {
+  animation: rowIn 0.4s ease-out both;
+  padding: 9px 0;
+  border-bottom: 1px solid var(--hair);
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: 0.06em;
+}
+.readrow b {
+  color: var(--volt);
+  font-weight: 700;
+}
+
+@keyframes drawLine {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+@keyframes popNode {
+  from {
+    opacity: 0;
+    transform: scale(0.2);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .rise,
-  .pulse-soft {
-    animation: none;
+  * {
+    animation: none !important;
+    transition: none !important;
   }
 }
