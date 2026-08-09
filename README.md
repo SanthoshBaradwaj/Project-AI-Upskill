@@ -46,7 +46,9 @@ recommendation defensible under questioning.
 ## Architecture
 
 ```
-Next.js 15 (App Router) · React 19 · Tailwind v4 · Recharts · Claude Opus 5
+Next.js 15 (App Router) · React 19 · plain CSS custom properties · Claude Opus 5
+No CSS framework, no icon library, no chart library, no image assets.
+Every graphic is inline SVG generated from data.
         │
         ├── /api/ingest    → unpdf/mammoth extract → Profile Agent
         ├── /api/quiz      → Examiner Agent → Validator Agent → shuffle
@@ -106,6 +108,30 @@ Measured end to end on the demo profile:
 
 The demo profile also demotes a real role (AI Ethics & Policy Analyst reaches zero
 availability for a Portland-based user needing sponsorship) — demoted, never hidden.
+
+## The interface
+
+Built to `Pivot — UI Implementation Spec v0.4`. Three rules hold everywhere:
+
+1. **Gold means earned.** Nothing else is ever gold — not headings, not borders,
+   not decoration. The first gold a user sees is their first correct answer.
+2. **The icon vocabulary is one circle and one 45° line.** Logo, icons, hero
+   graphic and network map are all built from those two shapes.
+3. **No deficit framing.** Skills fill *upward* toward what the job requires. A
+   dashed segment is the next thing to earn, never a loss. The word "gap" does
+   not appear on screen.
+
+The results page is one network map rather than three stacked card blocks:
+routes are pathways, terminals are roles, and the aspirational role the user
+named renders as an **onward station** on a dashed extension of the same line.
+The bridge recommendation becomes geometry — you can see that the route exists
+and that it runs through somewhere you're already close to.
+
+There is deliberately **no claimed-vs-verified chart**. A chart showing
+*claimed 4 → verified 2* renders the user's self-image falling. The same
+verified numbers fill upward against the role's requirement instead, and the
+correction rate survives as one sentence behind "How we scored this". See
+UI spec §12.1.
 
 ## Deliberate deviations from the PRD
 

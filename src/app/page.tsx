@@ -5,9 +5,9 @@ import { Ingest } from "@/components/Ingest";
 import { Landing } from "@/components/Landing";
 import { PreferencesScreen } from "@/components/PreferencesScreen";
 import { QuizScreen } from "@/components/QuizScreen";
+import { Rail } from "@/components/Rail";
 import { Results } from "@/components/Results";
 import { SkillConfirm } from "@/components/SkillConfirm";
-import { Card, Narration, Shell, StepBar } from "@/components/ui";
 import { DEFAULT_PREFERENCES } from "@/lib/types";
 import type {
   Answer,
@@ -21,7 +21,7 @@ import type {
   VerifiedSkill,
 } from "@/lib/types";
 
-type Step = "landing" | "ingest" | "preferences" | "confirm" | "quiz" | "scoring" | "results";
+type Step = "landing" | "ingest" | "prefs" | "confirm" | "quiz" | "scoring" | "results";
 
 interface Meta {
   metros: { id: string; label: string }[];
@@ -38,20 +38,15 @@ interface MatchPayload {
   match: MatchResult;
 }
 
-const SCORING_NARRATION = [
-  "Resolving what you actually demonstrated…",
-  "Discounting the claims we never tested…",
-  "Filtering the corpus to postings you can hold…",
-  "Scoring the distance to every role…",
-];
-
-const STEP_NUMBER: Partial<Record<Step, number>> = {
-  ingest: 1,
-  preferences: 2,
-  confirm: 3,
-  quiz: 4,
-  scoring: 5,
-  results: 5,
+/** The rail is a six-stop transit line; these are the stops. */
+const RAIL_STOP: Record<Step, number> = {
+  landing: 1,
+  ingest: 2,
+  prefs: 3,
+  confirm: 4,
+  quiz: 5,
+  scoring: 6,
+  results: 6,
 };
 
 export default function Page() {
@@ -59,16 +54,14 @@ export default function Page() {
   const [meta, setMeta] = useState<Meta | null>(null);
 
   const [profile, setProfile] = useState<Profile | null>(null);
-  const [degraded, setDegraded] = useState(false);
   const [preferences, setPreferences] = useState<Preferences>(DEFAULT_PREFERENCES);
   const [quiz, setQuiz] = useState<QuizBank | null>(null);
+  const [answers, setAnswers] = useState<Answer[]>([]);
   const [result, setResult] = useState<MatchPayload | null>(null);
-  const [scoringStep, setScoringStep] = useState(0);
+  const [demoBusy, setDemoBusy] = useState(false);
 
-  // Which skill set the cached quiz was generated for, so edits on the
-  // confirmation screen correctly invalidate it (P0-5).
-  const quizFor = useRef<string>("");
-  const quizInFlight = useRef(false);
+  const quizFor = useRef("");
+  const inFlight = useRef(false);
 
   useEffect(() => {
     void fetch("/api/meta")
@@ -77,7 +70,7 @@ export default function Page() {
       .catch(() => setMeta(null));
   }, []);
 
-  // Session-only persistence: survives a refresh, dies with the tab.
+  // Session-only: survives a refresh, dies with the tab.
   useEffect(() => {
     try {
       const raw = sessionStorage.getItem("pivot_session");
@@ -102,9 +95,9 @@ export default function Page() {
     async (skills: ExtractedSkill[], prefs: Preferences, domain: string) => {
       const key = skills.map((s) => s.skill_id).sort().join("|");
       if (quizFor.current === key && quiz) return quiz;
-      if (quizInFlight.current) return null;
+      if (inFlight.current) return null;
 
-      quizInFlight.current = true;
+      inFlight.current = true;
       try {
         const res = await fetch("/api/quiz", {
           method: "POST",
@@ -119,55 +112,44 @@ export default function Page() {
       } catch {
         return null;
       } finally {
-        quizInFlight.current = false;
+        inFlight.current = false;
       }
     },
     [quiz],
   );
 
-  // Fire generation the moment the confirmation screen mounts. This is what
-  // hides ~15s of latency behind user activity.
+  // Generation starts the moment the trust gate mounts — that is what hides it.
   useEffect(() => {
     if (step !== "confirm" || !profile) return;
     void generateQuiz(profile.skills, preferences, profile.inferred_domain);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [step, profile]);
 
-  useEffect(() => {
-    if (step !== "scoring") return;
-    setScoringStep(0);
-    const t = setInterval(
-      () => setScoringStep((s) => Math.min(SCORING_NARRATION.length - 1, s + 1)),
-      600,
-    );
-    return () => clearInterval(t);
-  }, [step]);
-
-  async function score(answers: Answer[], prefs = preferences) {
+  async function score(a: Answer[], prefs = preferences) {
     setStep("scoring");
     try {
       const res = await fetch("/api/match", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ skills: profile?.skills ?? [], answers, preferences: prefs }),
+        body: JSON.stringify({ skills: profile?.skills ?? [], answers: a, preferences: prefs }),
       });
-      const data = (await res.json()) as MatchPayload;
-      setResult(data);
+      setResult((await res.json()) as MatchPayload);
       setStep("results");
     } catch {
       setStep("quiz");
     }
   }
 
-  const [answers, setAnswers] = useState<Answer[]>([]);
-
   async function startDemo() {
-    const res = await fetch("/api/demo");
-    const data = await res.json();
-    setProfile(data.profile as Profile);
-    setPreferences(data.preferences as Preferences);
-    setDegraded(false);
-    setStep("confirm");
+    setDemoBusy(true);
+    try {
+      const data = await (await fetch("/api/demo")).json();
+      setProfile(data.profile as Profile);
+      setPreferences(data.preferences as Preferences);
+      setStep("confirm");
+    } finally {
+      setDemoBusy(false);
+    }
   }
 
   function restart() {
@@ -176,126 +158,112 @@ export default function Page() {
     setProfile(null);
     setPreferences(DEFAULT_PREFERENCES);
     setQuiz(null);
-    setResult(null);
     setAnswers([]);
+    setResult(null);
     setStep("landing");
   }
 
-  const stepNumber = STEP_NUMBER[step];
-
   return (
-    <Shell>
-      {stepNumber ? <StepBar step={stepNumber} /> : null}
+    <>
+      <Rail current={RAIL_STOP[step]} />
+      <main className="wrap">
+        {step === "landing" ? (
+          <Landing
+            onStart={() => setStep("ingest")}
+            onDemo={() => void startDemo()}
+            demoBusy={demoBusy}
+          />
+        ) : null}
 
-      {step === "landing" ? (
-        <Landing
-          onStart={() => setStep("ingest")}
-          onDemo={() => void startDemo()}
-          corpusSize={meta?.corpus.total_postings ?? 428}
-          liveAgents={meta?.live_agents ?? false}
-        />
-      ) : null}
-
-      {step === "ingest" ? (
-        <Ingest
-          onBack={() => setStep("landing")}
-          onDone={(p, wasDegraded) => {
-            setProfile(p);
-            setDegraded(wasDegraded);
-            setStep("preferences");
-          }}
-        />
-      ) : null}
-
-      {step === "preferences" && meta ? (
-        <PreferencesScreen
-          metros={meta.metros}
-          roles={meta.roles}
-          initial={preferences}
-          onDone={(p) => {
-            setPreferences(p);
-            setStep("confirm");
-          }}
-        />
-      ) : null}
-
-      {step === "confirm" && profile && meta ? (
-        <SkillConfirm
-          skills={profile.skills}
-          taxonomy={meta.taxonomy}
-          quizReady={Boolean(quiz)}
-          degraded={degraded}
-          onContinue={(skills) => {
-            setProfile({ ...profile, skills });
-            const key = skills.map((s) => s.skill_id).sort().join("|");
-            if (key !== quizFor.current) {
-              // The user edited the list, so the cached bank no longer matches.
-              setQuiz(null);
-              void generateQuiz(skills, preferences, profile.inferred_domain).then(() =>
-                setStep("quiz"),
-              );
-            } else {
-              setStep("quiz");
-            }
-          }}
-        />
-      ) : null}
-
-      {step === "quiz" ? (
-        quiz ? (
-          <QuizScreen
-            quiz={quiz}
-            onComplete={(a) => {
-              setAnswers(a);
-              void score(a);
+        {step === "ingest" ? (
+          <Ingest
+            onBack={() => setStep("landing")}
+            onDone={(p) => {
+              setProfile(p);
+              setStep("prefs");
             }}
           />
-        ) : (
-          <Card>
-            <h2 className="mb-1 text-xl font-semibold">Writing your questions</h2>
-            <p className="mb-6 text-sm text-fog">
-              Targeting the claims most likely to be overstated, then attacking our own questions.
-            </p>
-            <Narration
-              lines={[
-                "Ranking your claims by over-claim risk…",
-                "Writing 21 items across three difficulty tiers…",
-                "Adversarially reviewing every one…",
-                "Discarding anything with two defensible answers…",
-              ]}
-              active={2}
+        ) : null}
+
+        {step === "prefs" && meta ? (
+          <PreferencesScreen
+            metros={meta.metros}
+            roles={meta.roles}
+            initial={preferences}
+            onDone={(p) => {
+              setPreferences(p);
+              setStep("confirm");
+            }}
+          />
+        ) : null}
+
+        {step === "confirm" && profile && meta ? (
+          <SkillConfirm
+            skills={profile.skills}
+            taxonomy={meta.taxonomy}
+            quiz={quiz}
+            onContinue={(skills) => {
+              setProfile({ ...profile, skills });
+              const key = skills.map((s) => s.skill_id).sort().join("|");
+              if (key !== quizFor.current) {
+                setQuiz(null);
+                void generateQuiz(skills, preferences, profile.inferred_domain).then(() =>
+                  setStep("quiz"),
+                );
+              } else {
+                setStep("quiz");
+              }
+            }}
+          />
+        ) : null}
+
+        {step === "quiz" ? (
+          quiz ? (
+            <QuizScreen
+              quiz={quiz}
+              onComplete={(a) => {
+                setAnswers(a);
+                void score(a);
+              }}
             />
-          </Card>
-        )
-      ) : null}
+          ) : (
+            <section className="card" style={{ marginTop: 30 }}>
+              <div className="bggen">
+                <span className="pulse" />
+                <span>Writing your questions…</span>
+              </div>
+            </section>
+          )
+        ) : null}
 
-      {step === "scoring" ? (
-        <Card>
-          <h2 className="mb-1 text-xl font-semibold">Scoring what you proved</h2>
-          <p className="mb-6 text-sm text-fog">
-            Deterministic arithmetic, not a model — so we can explain every number.
-          </p>
-          <Narration lines={SCORING_NARRATION} active={scoringStep} />
-        </Card>
-      ) : null}
+        {step === "scoring" ? (
+          <section className="card" style={{ marginTop: 30 }}>
+            <div className="bggen">
+              <span className="pulse" />
+              <span>Mapping your route…</span>
+            </div>
+          </section>
+        ) : null}
 
-      {step === "results" && result && quiz && profile ? (
-        <Results
-          verified={result.verified}
-          learner={result.learner}
-          pace={result.pace}
-          match={result.match}
-          quiz={quiz}
-          preferences={preferences}
-          domain={profile.inferred_domain}
-          onRestart={restart}
-          onWeeklyHoursChange={(hours) => {
-            const next = { ...preferences, weekly_hours: hours };
-            setPreferences(next);
-            void score(answers, next);
-          }}
-        />
-      ) : null}
-    </Shell>
+        {step === "results" && result && quiz && profile ? (
+          <Results
+            verified={result.verified}
+            learner={result.learner}
+            pace={result.pace}
+            match={result.match}
+            quiz={quiz}
+            answers={answers}
+            preferences={preferences}
+            domain={profile.inferred_domain}
+            onRestart={restart}
+            onWeeklyHoursChange={(h) => {
+              const next = { ...preferences, weekly_hours: h };
+              setPreferences(next);
+              void score(answers, next);
+            }}
+          />
+        ) : null}
+      </main>
+    </>
   );
 }
