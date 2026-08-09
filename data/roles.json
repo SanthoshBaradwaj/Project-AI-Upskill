@@ -1,0 +1,274 @@
+{
+  "_comment": "Role archetypes normalised from a pre-harvested corpus of 428 postings (open job APIs and public ATS boards: Adzuna, USAJobs, Greenhouse, Lever). sponsorship_signal is derived by keyword pass over posting text and is OBSERVED POSTING LANGUAGE, NOT LEGAL FACT. Salary bands are US, 2025.",
+  "corpus_meta": {
+    "total_postings": 428,
+    "sources": ["adzuna_api", "usajobs_api", "greenhouse_public_boards", "lever_public_boards"],
+    "geography": "United States",
+    "collected": "2025",
+    "salary_basis": "base salary, US, 2025 postings"
+  },
+  "metros": [
+    { "id": "sf_bay", "label": "San Francisco Bay Area" },
+    { "id": "nyc", "label": "New York City" },
+    { "id": "seattle", "label": "Seattle" },
+    { "id": "boston", "label": "Boston" },
+    { "id": "austin", "label": "Austin" },
+    { "id": "chicago", "label": "Chicago" },
+    { "id": "la", "label": "Los Angeles" },
+    { "id": "portland", "label": "Portland" },
+    { "id": "denver", "label": "Denver" },
+    { "id": "washington_dc", "label": "Washington, DC" },
+    { "id": "other", "label": "Other US metro" }
+  ],
+  "roles": [
+    {
+      "role_id": "ml_engineer",
+      "title": "Machine Learning Engineer",
+      "salary_band_usd": [125000, 185000],
+      "posting_count": 47,
+      "entry_difficulty": 4,
+      "required_skills": [
+        { "skill": "python", "level": 3, "weight": 1.0 },
+        { "skill": "machine_learning", "level": 3, "weight": 1.0 },
+        { "skill": "statistics", "level": 3, "weight": 0.8 },
+        { "skill": "sql", "level": 2, "weight": 0.6 },
+        { "skill": "cloud_deployment", "level": 2, "weight": 0.7 },
+        { "skill": "software_engineering", "level": 3, "weight": 0.9 },
+        { "skill": "model_evaluation", "level": 3, "weight": 0.8 }
+      ],
+      "transferable_signals": ["experimental_design", "systems_thinking", "algorithmic_intuition"],
+      "location_distribution": { "sf_bay": 14, "nyc": 9, "seattle": 7, "portland": 3, "remote_us": 11, "other": 3 },
+      "remote_share": 0.23,
+      "sponsorship_signal": { "explicitly_no": 34, "explicitly_yes": 6, "unstated": 7 },
+      "typical_stack": ["pytorch", "aws_sagemaker", "docker", "airflow"]
+    },
+    {
+      "role_id": "data_scientist",
+      "title": "Data Scientist",
+      "salary_band_usd": [118000, 172000],
+      "posting_count": 52,
+      "entry_difficulty": 4,
+      "required_skills": [
+        { "skill": "python", "level": 3, "weight": 1.0 },
+        { "skill": "statistics", "level": 3, "weight": 1.0 },
+        { "skill": "machine_learning", "level": 2, "weight": 0.8 },
+        { "skill": "sql", "level": 3, "weight": 0.8 },
+        { "skill": "experimental_design", "level": 3, "weight": 0.9 },
+        { "skill": "data_visualization", "level": 2, "weight": 0.6 },
+        { "skill": "stakeholder_communication", "level": 3, "weight": 0.7 }
+      ],
+      "transferable_signals": ["causal_reasoning", "critical_analysis", "quantitative_reporting"],
+      "location_distribution": { "sf_bay": 12, "nyc": 11, "seattle": 6, "boston": 5, "austin": 3, "remote_us": 12, "other": 3 },
+      "remote_share": 0.23,
+      "sponsorship_signal": { "explicitly_no": 30, "explicitly_yes": 9, "unstated": 13 },
+      "typical_stack": ["python", "scikit_learn", "snowflake", "dbt"]
+    },
+    {
+      "role_id": "analytics_engineer",
+      "title": "Analytics Engineer",
+      "salary_band_usd": [105000, 155000],
+      "posting_count": 38,
+      "entry_difficulty": 3,
+      "required_skills": [
+        { "skill": "sql", "level": 4, "weight": 1.0 },
+        { "skill": "data_modeling", "level": 3, "weight": 1.0 },
+        { "skill": "dbt", "level": 3, "weight": 0.9 },
+        { "skill": "python", "level": 2, "weight": 0.6 },
+        { "skill": "data_warehousing", "level": 3, "weight": 0.8 },
+        { "skill": "version_control", "level": 2, "weight": 0.6 },
+        { "skill": "stakeholder_communication", "level": 3, "weight": 0.7 }
+      ],
+      "transferable_signals": ["systems_thinking", "structured_decomposition", "process_improvement"],
+      "location_distribution": { "sf_bay": 7, "nyc": 8, "austin": 4, "chicago": 3, "denver": 2, "remote_us": 12, "other": 2 },
+      "remote_share": 0.32,
+      "sponsorship_signal": { "explicitly_no": 21, "explicitly_yes": 4, "unstated": 13 },
+      "typical_stack": ["dbt", "snowflake", "looker", "git"]
+    },
+    {
+      "role_id": "data_analyst_ai",
+      "title": "Data Analyst (AI-Adjacent)",
+      "salary_band_usd": [82000, 122000],
+      "posting_count": 61,
+      "entry_difficulty": 2,
+      "required_skills": [
+        { "skill": "sql", "level": 3, "weight": 1.0 },
+        { "skill": "data_visualization", "level": 3, "weight": 0.9 },
+        { "skill": "bi_tooling", "level": 3, "weight": 0.8 },
+        { "skill": "statistics", "level": 2, "weight": 0.7 },
+        { "skill": "python", "level": 2, "weight": 0.5 },
+        { "skill": "stakeholder_communication", "level": 3, "weight": 0.8 },
+        { "skill": "prompt_engineering", "level": 2, "weight": 0.4 }
+      ],
+      "transferable_signals": ["critical_analysis", "quantitative_reporting", "requirements_elicitation"],
+      "location_distribution": { "sf_bay": 8, "nyc": 12, "chicago": 7, "austin": 5, "la": 5, "portland": 4, "remote_us": 16, "other": 4 },
+      "remote_share": 0.26,
+      "sponsorship_signal": { "explicitly_no": 38, "explicitly_yes": 5, "unstated": 18 },
+      "typical_stack": ["sql", "tableau", "excel", "python"]
+    },
+    {
+      "role_id": "data_engineer",
+      "title": "Data Engineer",
+      "salary_band_usd": [115000, 168000],
+      "posting_count": 44,
+      "entry_difficulty": 4,
+      "required_skills": [
+        { "skill": "sql", "level": 3, "weight": 0.9 },
+        { "skill": "python", "level": 3, "weight": 1.0 },
+        { "skill": "etl_pipelines", "level": 3, "weight": 1.0 },
+        { "skill": "data_orchestration", "level": 3, "weight": 0.8 },
+        { "skill": "cloud_deployment", "level": 3, "weight": 0.8 },
+        { "skill": "distributed_data", "level": 2, "weight": 0.6 },
+        { "skill": "software_engineering", "level": 3, "weight": 0.8 }
+      ],
+      "transferable_signals": ["systems_thinking", "structured_decomposition", "risk_assessment"],
+      "location_distribution": { "sf_bay": 9, "nyc": 8, "seattle": 6, "austin": 4, "chicago": 3, "remote_us": 12, "other": 2 },
+      "remote_share": 0.27,
+      "sponsorship_signal": { "explicitly_no": 25, "explicitly_yes": 7, "unstated": 12 },
+      "typical_stack": ["airflow", "spark", "snowflake", "aws"]
+    },
+    {
+      "role_id": "mlops_engineer",
+      "title": "MLOps Engineer",
+      "salary_band_usd": [130000, 190000],
+      "posting_count": 29,
+      "entry_difficulty": 5,
+      "required_skills": [
+        { "skill": "python", "level": 3, "weight": 0.9 },
+        { "skill": "mlops", "level": 3, "weight": 1.0 },
+        { "skill": "containerization", "level": 3, "weight": 0.9 },
+        { "skill": "cloud_deployment", "level": 4, "weight": 1.0 },
+        { "skill": "ci_cd", "level": 3, "weight": 0.8 },
+        { "skill": "model_monitoring", "level": 3, "weight": 0.8 },
+        { "skill": "machine_learning", "level": 2, "weight": 0.6 }
+      ],
+      "transferable_signals": ["systems_thinking", "risk_assessment", "process_improvement"],
+      "location_distribution": { "sf_bay": 8, "nyc": 4, "seattle": 5, "austin": 2, "remote_us": 8, "other": 2 },
+      "remote_share": 0.28,
+      "sponsorship_signal": { "explicitly_no": 18, "explicitly_yes": 4, "unstated": 7 },
+      "typical_stack": ["kubernetes", "docker", "mlflow", "terraform"]
+    },
+    {
+      "role_id": "llm_application_engineer",
+      "title": "LLM / Prompt Application Engineer",
+      "salary_band_usd": [120000, 180000],
+      "posting_count": 35,
+      "entry_difficulty": 3,
+      "required_skills": [
+        { "skill": "python", "level": 3, "weight": 1.0 },
+        { "skill": "llm_application_dev", "level": 3, "weight": 1.0 },
+        { "skill": "prompt_engineering", "level": 3, "weight": 0.9 },
+        { "skill": "rag_systems", "level": 3, "weight": 0.8 },
+        { "skill": "api_development", "level": 3, "weight": 0.8 },
+        { "skill": "model_evaluation", "level": 2, "weight": 0.7 },
+        { "skill": "software_engineering", "level": 2, "weight": 0.7 }
+      ],
+      "transferable_signals": ["structured_decomposition", "critical_analysis", "written_communication"],
+      "location_distribution": { "sf_bay": 13, "nyc": 7, "seattle": 3, "austin": 2, "remote_us": 8, "other": 2 },
+      "remote_share": 0.23,
+      "sponsorship_signal": { "explicitly_no": 19, "explicitly_yes": 6, "unstated": 10 },
+      "typical_stack": ["anthropic_api", "langchain", "pgvector", "fastapi"]
+    },
+    {
+      "role_id": "ai_solutions_architect",
+      "title": "AI Solutions Architect",
+      "salary_band_usd": [135000, 195000],
+      "posting_count": 26,
+      "entry_difficulty": 4,
+      "required_skills": [
+        { "skill": "system_design", "level": 3, "weight": 1.0 },
+        { "skill": "cloud_deployment", "level": 3, "weight": 0.9 },
+        { "skill": "llm_application_dev", "level": 2, "weight": 0.8 },
+        { "skill": "python", "level": 2, "weight": 0.6 },
+        { "skill": "stakeholder_communication", "level": 4, "weight": 1.0 },
+        { "skill": "requirements_elicitation", "level": 3, "weight": 0.8 },
+        { "skill": "vendor_evaluation", "level": 3, "weight": 0.6 }
+      ],
+      "transferable_signals": ["systems_thinking", "cross_functional_leadership", "domain_expertise"],
+      "location_distribution": { "sf_bay": 5, "nyc": 6, "seattle": 3, "chicago": 3, "boston": 2, "remote_us": 6, "other": 1 },
+      "remote_share": 0.23,
+      "sponsorship_signal": { "explicitly_no": 16, "explicitly_yes": 3, "unstated": 7 },
+      "typical_stack": ["aws_bedrock", "azure_openai", "terraform", "kubernetes"]
+    },
+    {
+      "role_id": "ai_product_manager",
+      "title": "AI Product Manager",
+      "salary_band_usd": [128000, 182000],
+      "posting_count": 33,
+      "entry_difficulty": 2,
+      "required_skills": [
+        { "skill": "roadmapping", "level": 3, "weight": 1.0 },
+        { "skill": "stakeholder_communication", "level": 4, "weight": 1.0 },
+        { "skill": "user_research", "level": 3, "weight": 0.8 },
+        { "skill": "model_evaluation", "level": 2, "weight": 0.7 },
+        { "skill": "prompt_engineering", "level": 2, "weight": 0.6 },
+        { "skill": "sql", "level": 2, "weight": 0.5 },
+        { "skill": "cross_functional_leadership", "level": 3, "weight": 0.9 }
+      ],
+      "transferable_signals": ["structured_decomposition", "domain_expertise", "critical_analysis"],
+      "location_distribution": { "sf_bay": 10, "nyc": 8, "seattle": 4, "austin": 2, "remote_us": 7, "other": 2 },
+      "remote_share": 0.21,
+      "sponsorship_signal": { "explicitly_no": 22, "explicitly_yes": 3, "unstated": 8 },
+      "typical_stack": ["amplitude", "figma", "sql", "notion"]
+    },
+    {
+      "role_id": "conversation_designer",
+      "title": "Conversation Designer",
+      "salary_band_usd": [95000, 140000],
+      "posting_count": 18,
+      "entry_difficulty": 2,
+      "required_skills": [
+        { "skill": "conversation_design", "level": 3, "weight": 1.0 },
+        { "skill": "prompt_engineering", "level": 3, "weight": 0.9 },
+        { "skill": "written_communication", "level": 4, "weight": 1.0 },
+        { "skill": "user_research", "level": 3, "weight": 0.8 },
+        { "skill": "information_architecture", "level": 2, "weight": 0.6 },
+        { "skill": "model_evaluation", "level": 2, "weight": 0.5 }
+      ],
+      "transferable_signals": ["critical_analysis", "requirements_elicitation", "teaching_mentoring"],
+      "location_distribution": { "sf_bay": 3, "nyc": 4, "la": 2, "chicago": 2, "portland": 2, "remote_us": 5 },
+      "remote_share": 0.28,
+      "sponsorship_signal": { "explicitly_no": 9, "explicitly_yes": 2, "unstated": 7 },
+      "typical_stack": ["voiceflow", "figma", "anthropic_api", "notion"]
+    },
+    {
+      "role_id": "ai_ethics_policy_analyst",
+      "title": "AI Ethics & Policy Analyst",
+      "salary_band_usd": [98000, 150000],
+      "posting_count": 21,
+      "entry_difficulty": 2,
+      "required_skills": [
+        { "skill": "ai_governance", "level": 3, "weight": 1.0 },
+        { "skill": "privacy_compliance", "level": 3, "weight": 0.9 },
+        { "skill": "written_communication", "level": 4, "weight": 1.0 },
+        { "skill": "critical_analysis", "level": 4, "weight": 0.9 },
+        { "skill": "ai_safety_evaluation", "level": 2, "weight": 0.7 },
+        { "skill": "regulatory_literacy", "level": 3, "weight": 0.8 }
+      ],
+      "transferable_signals": ["risk_assessment", "domain_expertise", "structured_decomposition"],
+      "location_distribution": { "sf_bay": 5, "nyc": 5, "boston": 3, "washington_dc": 7, "other": 1 },
+      "remote_share": 0.0,
+      "sponsorship_signal": { "explicitly_no": 13, "explicitly_yes": 2, "unstated": 6 },
+      "typical_stack": ["nist_ai_rmf", "eu_ai_act", "notion", "sql"]
+    },
+    {
+      "role_id": "ai_technical_writer",
+      "title": "AI Technical Writer",
+      "salary_band_usd": [88000, 132000],
+      "posting_count": 24,
+      "entry_difficulty": 1,
+      "required_skills": [
+        { "skill": "technical_writing", "level": 4, "weight": 1.0 },
+        { "skill": "written_communication", "level": 4, "weight": 1.0 },
+        { "skill": "information_architecture", "level": 3, "weight": 0.8 },
+        { "skill": "api_development", "level": 1, "weight": 0.5 },
+        { "skill": "prompt_engineering", "level": 2, "weight": 0.6 },
+        { "skill": "version_control", "level": 2, "weight": 0.6 }
+      ],
+      "transferable_signals": ["structured_decomposition", "teaching_mentoring", "critical_analysis"],
+      "location_distribution": { "sf_bay": 4, "nyc": 4, "seattle": 3, "portland": 3, "austin": 2, "remote_us": 7, "other": 1 },
+      "remote_share": 0.29,
+      "sponsorship_signal": { "explicitly_no": 12, "explicitly_yes": 2, "unstated": 10 },
+      "typical_stack": ["markdown", "docusaurus", "git", "anthropic_api"]
+    }
+  ]
+}
