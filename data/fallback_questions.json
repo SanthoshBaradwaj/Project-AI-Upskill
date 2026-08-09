@@ -1,0 +1,312 @@
+{
+  "_comment": "Hand-verified fallback bank. Served silently when live generation fails or times out (P0-16). Every item has been reviewed for single-defensible-answer and difficulty match; they bypass the Validator. correct_index here is pre-shuffle — the server shuffles and remaps before serving.",
+  "questions": [
+    {
+      "question_id": "fb_python_l1_1", "skill_id": "python", "difficulty": "L1",
+      "stem": "A colleague writes `items = [1, 2, 3]` then `copy = items` and appends to `copy`. What is the length of `items` afterwards?",
+      "options": ["4, because both names refer to the same list object", "3, because assignment creates an independent copy", "4, but only for lists of numbers", "3, because append returns a new list"],
+      "correct_index": 0,
+      "explanation": "Assignment binds a second name to the same object; mutating through either name is visible through both."
+    },
+    {
+      "question_id": "fb_python_l2_1", "skill_id": "python", "difficulty": "L2",
+      "stem": "You need to apply a slow transform to 2 million rows in a pandas DataFrame. Profiling shows the transform is CPU-bound pure Python. What gives the largest speedup?",
+      "options": ["Replace the row-wise apply with vectorised column operations", "Wrap the existing apply in a try/except block", "Convert the DataFrame to a Python dict first", "Increase the pandas display precision setting"],
+      "correct_index": 0,
+      "explanation": "Row-wise apply runs the Python interpreter per row; vectorised operations push the loop into compiled code."
+    },
+    {
+      "question_id": "fb_python_l3_1", "skill_id": "python", "difficulty": "L3",
+      "stem": "A function uses `def add(item, target=[])` and appends to `target`. Across repeated calls with no second argument, results accumulate. What explains this?",
+      "options": ["The default is evaluated once at definition and shared across calls", "Python caches return values for functions with defaults", "Lists are reference types so they always accumulate", "The interpreter reuses the stack frame between calls"],
+      "correct_index": 0,
+      "explanation": "Default arguments are evaluated once when the function is defined, so a mutable default persists between calls."
+    },
+
+    {
+      "question_id": "fb_sql_l1_1", "skill_id": "sql", "difficulty": "L1",
+      "stem": "A query joins `orders` to `customers` and you need every order kept even when no customer row matches. Which join do you use?",
+      "options": ["LEFT JOIN with orders on the left", "INNER JOIN with a WHERE clause", "CROSS JOIN with a filter", "RIGHT JOIN with orders on the left"],
+      "correct_index": 0,
+      "explanation": "A LEFT JOIN preserves all rows from the left table and fills unmatched right-side columns with NULL."
+    },
+    {
+      "question_id": "fb_sql_l2_1", "skill_id": "sql", "difficulty": "L2",
+      "stem": "You need each customer's most recent order, one row per customer, from an orders table with millions of rows. Which approach is most appropriate?",
+      "options": ["ROW_NUMBER() partitioned by customer ordered by date, filtered to 1", "GROUP BY customer with SELECT * and MAX(date)", "SELECT DISTINCT customer with ORDER BY date DESC", "A self-join on customer with no additional predicate"],
+      "correct_index": 0,
+      "explanation": "A windowed ROW_NUMBER ranks rows within each customer so you can keep exactly the top one per group."
+    },
+    {
+      "question_id": "fb_sql_l3_1", "skill_id": "sql", "difficulty": "L3",
+      "stem": "A LEFT JOIN returns fewer rows than the left table alone. The only change was moving a right-table predicate from ON into WHERE. Why did rows disappear?",
+      "options": ["WHERE filters after the join, discarding rows whose right side is NULL", "WHERE is evaluated before the join, so the left table shrinks", "Moving a predicate silently converts the join to a CROSS JOIN", "The optimiser reorders LEFT JOINs into INNER JOINs whenever possible"],
+      "correct_index": 0,
+      "explanation": "A right-table predicate in WHERE rejects the NULL-extended rows a LEFT JOIN produced, turning it into an inner join."
+    },
+
+    {
+      "question_id": "fb_stats_l1_1", "skill_id": "statistics", "difficulty": "L1",
+      "stem": "A test returns p = 0.03 at a significance level of 0.05. What does that p-value represent?",
+      "options": ["The probability of data this extreme if the null hypothesis were true", "The probability that the null hypothesis is true", "The probability that the result will replicate", "The size of the effect that was measured"],
+      "correct_index": 0,
+      "explanation": "A p-value is computed assuming the null is true; it says nothing directly about the probability of any hypothesis."
+    },
+    {
+      "question_id": "fb_stats_l2_1", "skill_id": "statistics", "difficulty": "L2",
+      "stem": "Median household income is $58k and the mean is $91k for the same sample. Which statement best explains the gap?",
+      "options": ["The distribution is right-skewed by a minority of very high incomes", "The sample size is too small for the mean to be defined", "The median was calculated on a different variable", "Income data always produces a higher mean by construction"],
+      "correct_index": 0,
+      "explanation": "The mean is pulled toward extreme values while the median is not, so mean far above median indicates right skew."
+    },
+    {
+      "question_id": "fb_stats_l3_1", "skill_id": "statistics", "difficulty": "L3",
+      "stem": "An analyst runs 40 subgroup comparisons and reports the three with p < 0.05 as findings. What is the primary problem with this conclusion?",
+      "options": ["Multiple comparisons make some significant results expected by chance", "The sample was not normally distributed", "p < 0.05 is too lenient a threshold for any single test", "Subgroup analysis requires a paired test rather than an unpaired one"],
+      "correct_index": 0,
+      "explanation": "At α = 0.05, roughly two of forty independent tests will clear the threshold even if no real effects exist."
+    },
+
+    {
+      "question_id": "fb_ml_l1_1", "skill_id": "machine_learning", "difficulty": "L1",
+      "stem": "A model scores 0.98 on training data and 0.61 on held-out data. What is this pattern called?",
+      "options": ["Overfitting", "Underfitting", "Class imbalance", "Label leakage"],
+      "correct_index": 0,
+      "explanation": "A large gap between training and held-out performance means the model memorised training-specific structure."
+    },
+    {
+      "question_id": "fb_ml_l2_1", "skill_id": "machine_learning", "difficulty": "L2",
+      "stem": "A fraud classifier sees 0.4% positives and reports 99.6% accuracy. Which metric pair best reflects whether it is useful?",
+      "options": ["Precision and recall on the positive class", "Accuracy and training loss", "R-squared and mean absolute error", "Silhouette score and inertia"],
+      "correct_index": 0,
+      "explanation": "With extreme class imbalance, accuracy is dominated by the majority class; precision and recall measure the rare class directly."
+    },
+    {
+      "question_id": "fb_ml_l3_1", "skill_id": "machine_learning", "difficulty": "L3",
+      "stem": "A churn model performs excellently offline but collapses in production. One feature is `support_tickets_last_7_days`, populated after churn is recorded. What is the failure?",
+      "options": ["Target leakage from a feature unavailable at prediction time", "Covariate shift between training and serving distributions", "Insufficient regularisation on the linear terms", "An incorrectly specified train/test split ratio"],
+      "correct_index": 0,
+      "explanation": "The feature encodes post-outcome information the model will never have at prediction time, inflating offline scores."
+    },
+
+    {
+      "question_id": "fb_modeval_l1_1", "skill_id": "model_evaluation", "difficulty": "L1",
+      "stem": "Why is a held-out test set kept separate from the data used to tune hyperparameters?",
+      "options": ["To give an unbiased estimate of performance on unseen data", "To increase the total amount of training data available", "To guarantee the model converges during training", "To make the training loop run faster"],
+      "correct_index": 0,
+      "explanation": "Any data used for tuning influences model selection, so only untouched data gives an honest generalisation estimate."
+    },
+    {
+      "question_id": "fb_modeval_l2_1", "skill_id": "model_evaluation", "difficulty": "L2",
+      "stem": "You are evaluating an LLM summarisation feature. Which evaluation design gives the most trustworthy signal for a product decision?",
+      "options": ["A held-out set with a rubric and blind human grading", "Average output length across a sample of responses", "Self-reported confidence scores from the model", "Token cost per request across the sample"],
+      "correct_index": 0,
+      "explanation": "Blind grading against a fixed rubric measures the quality you care about rather than a proxy the model can game."
+    },
+    {
+      "question_id": "fb_modeval_l3_1", "skill_id": "model_evaluation", "difficulty": "L3",
+      "stem": "Your LLM-as-judge eval scores a new model 12 points higher, but blind human review shows no improvement. Which explanation should you check first?",
+      "options": ["The judge favours stylistic traits the new model produces more often", "The held-out set is too large for a stable estimate", "Human reviewers need the judge's scores to calibrate", "Judge evaluations require a higher sampling temperature"],
+      "correct_index": 0,
+      "explanation": "LLM judges reward surface features such as length and structure, so a style shift can move scores without quality moving."
+    },
+
+    {
+      "question_id": "fb_expdes_l1_1", "skill_id": "experimental_design", "difficulty": "L1",
+      "stem": "In an A/B test, what is the purpose of randomly assigning users to variants?",
+      "options": ["To make the groups comparable on both known and unknown factors", "To reduce the sample size the test needs", "To ensure both groups end up exactly equal in size", "To let the test finish faster than sequential testing"],
+      "correct_index": 0,
+      "explanation": "Randomisation balances confounders you did not measure, which is what lets you attribute differences to the treatment."
+    },
+    {
+      "question_id": "fb_expdes_l2_1", "skill_id": "experimental_design", "difficulty": "L2",
+      "stem": "A test is powered for two weeks. On day 4 the treatment leads by a significant margin and a stakeholder asks to ship. What is the main risk?",
+      "options": ["Stopping early at a random peak inflates the false positive rate", "Four days of data always violates the normality assumption", "The effect size cannot be computed before the planned end", "Early results are biased toward the control group by design"],
+      "correct_index": 0,
+      "explanation": "Repeatedly checking and stopping when significant means you are sampling the peaks of random fluctuation."
+    },
+    {
+      "question_id": "fb_expdes_l3_1", "skill_id": "experimental_design", "difficulty": "L3",
+      "stem": "A marketplace tests a seller-ranking change with buyers randomised individually. Treatment shows a large lift. Why might that lift not survive a full rollout?",
+      "options": ["Treated and control buyers compete for the same finite seller inventory", "Individual randomisation cannot be applied to ranking systems", "Marketplace metrics require a paired rather than unpaired test", "Buyer-level assignment always produces underpowered experiments"],
+      "correct_index": 0,
+      "explanation": "Interference between units means treatment gains partly come from control's share, so the measured lift overstates the global effect."
+    },
+
+    {
+      "question_id": "fb_dataviz_l1_1", "skill_id": "data_visualization", "difficulty": "L1",
+      "stem": "You need to show how one metric changed month over month across two years. Which chart type fits best?",
+      "options": ["A line chart with time on the horizontal axis", "A pie chart segmented by month", "A stacked bar chart of category totals", "A scatter plot of the metric against itself"],
+      "correct_index": 0,
+      "explanation": "Line charts encode continuity over an ordered time axis, which is what makes a trend readable."
+    },
+    {
+      "question_id": "fb_dataviz_l2_1", "skill_id": "data_visualization", "difficulty": "L2",
+      "stem": "A bar chart of conversion rates starts its y-axis at 12% rather than 0%, making a 1-point difference look dramatic. What is the concern?",
+      "options": ["Bar length no longer encodes magnitude proportionally", "Bar charts cannot display percentage values", "The chart needs a logarithmic axis instead", "Conversion rates should never be compared across groups"],
+      "correct_index": 0,
+      "explanation": "Bars are read by length, so a truncated baseline exaggerates differences relative to the quantities they represent."
+    },
+    {
+      "question_id": "fb_dataviz_l3_1", "skill_id": "data_visualization", "difficulty": "L3",
+      "stem": "A dashboard shows a strong upward trend built from a monthly average that hides two opposing segments. Which addition most improves the reader's decision?",
+      "options": ["Break the series out by the segments that move in opposite directions", "Add a second y-axis scaled to the same metric", "Switch the aggregate from mean to median", "Increase the smoothing window on the trend line"],
+      "correct_index": 0,
+      "explanation": "An aggregate can move opposite to every subgroup; disaggregating is what surfaces the composition effect."
+    },
+
+    {
+      "question_id": "fb_prompt_l1_1", "skill_id": "prompt_engineering", "difficulty": "L1",
+      "stem": "What is the practical purpose of a system prompt in a chat-style LLM application?",
+      "options": ["To set persistent instructions and role that apply across turns", "To store the conversation history for retrieval", "To reduce the number of tokens billed per request", "To pick which model version serves the request"],
+      "correct_index": 0,
+      "explanation": "The system prompt carries operator-level instructions that persist across the conversation rather than one turn."
+    },
+    {
+      "question_id": "fb_prompt_l2_1", "skill_id": "prompt_engineering", "difficulty": "L2",
+      "stem": "An extraction prompt returns valid JSON most of the time but occasionally adds a prose preamble. What is the most reliable fix?",
+      "options": ["Constrain the response with a schema-enforced structured output", "Add the word IMPORTANT before the existing instruction", "Increase the maximum token limit on the request", "Repeat the JSON instruction three times in the prompt"],
+      "correct_index": 0,
+      "explanation": "Schema-constrained output enforces the format at decode time instead of relying on the model following an instruction."
+    },
+    {
+      "question_id": "fb_prompt_l3_1", "skill_id": "prompt_engineering", "difficulty": "L3",
+      "stem": "A prompt with twelve rules marked CRITICAL now over-applies several of them in cases they were never meant for. What is the most likely cause?",
+      "options": ["Uniform emphasis removes the signal that distinguishes the real constraints", "The rules exceed the model's instruction-following capacity", "Capitalised text is tokenised differently and weighted higher", "Rules must be ordered alphabetically to be applied correctly"],
+      "correct_index": 0,
+      "explanation": "When everything is marked critical nothing is, and modern models follow the inflated emphasis literally across contexts."
+    },
+
+    {
+      "question_id": "fb_llmapp_l1_1", "skill_id": "llm_application_dev", "difficulty": "L1",
+      "stem": "In an LLM API request, what does the context window limit?",
+      "options": ["The combined size of input and generated output tokens", "The number of requests allowed per minute", "The maximum number of tools that can be defined", "The length of the system prompt only"],
+      "correct_index": 0,
+      "explanation": "The context window bounds everything the model processes in one request, input and output together."
+    },
+    {
+      "question_id": "fb_llmapp_l2_1", "skill_id": "llm_application_dev", "difficulty": "L2",
+      "stem": "Your agent re-sends a 40k-token system prompt on every turn and latency is dominated by input processing. Which change helps most?",
+      "options": ["Enable prompt caching with a breakpoint after the stable prefix", "Lower the maximum output token setting", "Split each turn into two smaller sequential requests", "Move the system prompt into the final user message"],
+      "correct_index": 0,
+      "explanation": "Caching a stable prefix lets repeated turns reuse the processed tokens instead of paying full cost each time."
+    },
+    {
+      "question_id": "fb_llmapp_l3_1", "skill_id": "llm_application_dev", "difficulty": "L3",
+      "stem": "A cached agent shows a zero cache-hit rate despite an unchanged system prompt. The prompt builder injects the current timestamp in its header. What is happening?",
+      "options": ["Caching is a prefix match, so the changing header invalidates everything after it", "Timestamps are excluded from the cache key but reset the TTL", "The cache only applies to tool definitions, never system text", "Cache entries expire immediately when any header is present"],
+      "correct_index": 0,
+      "explanation": "Cache lookup matches on exact prefix bytes; a value that changes per request breaks every breakpoint downstream of it."
+    },
+
+    {
+      "question_id": "fb_rag_l1_1", "skill_id": "rag_systems", "difficulty": "L1",
+      "stem": "What problem is retrieval-augmented generation primarily designed to address?",
+      "options": ["Grounding answers in specific sources outside the model's training data", "Reducing the number of parameters the model must load", "Removing the need for a system prompt", "Increasing the model's maximum output length"],
+      "correct_index": 0,
+      "explanation": "RAG supplies external documents at request time so answers can cite sources the model was never trained on."
+    },
+    {
+      "question_id": "fb_rag_l2_1", "skill_id": "rag_systems", "difficulty": "L2",
+      "stem": "A RAG system returns topically related but unhelpful passages. Chunks are 4,000 characters spanning several subjects each. What should you change first?",
+      "options": ["Reduce chunk size so each chunk covers a single coherent topic", "Increase the number of chunks returned per query", "Switch the vector store to a different database engine", "Raise the model's maximum output token limit"],
+      "correct_index": 0,
+      "explanation": "An embedding averages everything in its chunk, so multi-topic chunks retrieve on a blur rather than a specific idea."
+    },
+    {
+      "question_id": "fb_rag_l3_1", "skill_id": "rag_systems", "difficulty": "L3",
+      "stem": "Retrieval recall measured against labelled documents is 0.92, but end-to-end answer accuracy is 0.55. Where should you investigate first?",
+      "options": ["How retrieved context is ranked and presented in the final prompt", "Whether the embedding model needs a larger dimension count", "Whether the vector index should be rebuilt more frequently", "Whether documents should be re-chunked at double the size"],
+      "correct_index": 0,
+      "explanation": "High recall means the right passage is being retrieved, so the loss is downstream in ordering, truncation, or prompt assembly."
+    },
+
+    {
+      "question_id": "fb_cloud_l1_1", "skill_id": "cloud_deployment", "difficulty": "L1",
+      "stem": "What is the main reason for packaging an application in a container before deploying it?",
+      "options": ["It bundles dependencies so the runtime matches across environments", "It automatically encrypts all network traffic", "It removes the need for any configuration management", "It guarantees the application scales without additional setup"],
+      "correct_index": 0,
+      "explanation": "Containers ship the dependency tree with the code, which is what eliminates works-on-my-machine drift."
+    },
+    {
+      "question_id": "fb_cloud_l2_1", "skill_id": "cloud_deployment", "difficulty": "L2",
+      "stem": "A batch scoring job runs nightly for 20 minutes and is idle the rest of the day. Which deployment shape best fits the cost profile?",
+      "options": ["A scheduled job on managed compute that shuts down when finished", "A permanently running instance sized for peak load", "A load-balanced cluster with a minimum of three replicas", "An always-on service behind an autoscaler with a floor of one"],
+      "correct_index": 0,
+      "explanation": "A workload with a fixed short window and long idle period should pay only for the window it actually runs."
+    },
+    {
+      "question_id": "fb_cloud_l3_1", "skill_id": "cloud_deployment", "difficulty": "L3",
+      "stem": "A serverless inference endpoint meets its p50 latency target but badly misses p99. Traffic is sparse and bursty. What is the most likely cause?",
+      "options": ["Cold starts when no warm instance is available for a burst", "Insufficient memory allocated to each invocation", "The model artifact is stored in the wrong region", "The endpoint is missing a request-level retry policy"],
+      "correct_index": 0,
+      "explanation": "Sparse traffic lets instances scale to zero, so the tail is dominated by requests that pay initialisation cost."
+    },
+
+    {
+      "question_id": "fb_swe_l1_1", "skill_id": "software_engineering", "difficulty": "L1",
+      "stem": "What problem does version control primarily solve on a team?",
+      "options": ["Tracking change history and coordinating concurrent edits", "Automatically detecting logic errors before runtime", "Reducing the memory footprint of the application", "Enforcing a consistent code formatting style"],
+      "correct_index": 0,
+      "explanation": "Version control records who changed what and reconciles parallel work; the other concerns need separate tools."
+    },
+    {
+      "question_id": "fb_swe_l2_1", "skill_id": "software_engineering", "difficulty": "L2",
+      "stem": "A data pipeline function reads a config file, queries a database, and writes a report. Testing it requires standing up all three. What refactor most improves testability?",
+      "options": ["Pass the config and data in as arguments and return the report", "Add a global flag that skips the database call in tests", "Wrap the whole function body in a try/except block", "Move the function into a separate module unchanged"],
+      "correct_index": 0,
+      "explanation": "Separating I/O from computation lets the logic be tested directly with plain values and no external systems."
+    },
+    {
+      "question_id": "fb_swe_l3_1", "skill_id": "software_engineering", "difficulty": "L3",
+      "stem": "A nightly integration test fails roughly one run in eight, always on a different assertion, and always passes on rerun. What should you suspect first?",
+      "options": ["Shared mutable state or ordering dependence between tests", "An off-by-one error in a single assertion", "Insufficient test coverage of the module under test", "A version mismatch in a pinned dependency"],
+      "correct_index": 0,
+      "explanation": "Non-deterministic failures that move between assertions point at state leaking across tests rather than one broken check."
+    },
+
+    {
+      "question_id": "fb_stake_l1_1", "skill_id": "stakeholder_communication", "difficulty": "L1",
+      "stem": "You are opening a written analysis for a busy executive audience. What belongs in the first paragraph?",
+      "options": ["The finding and the decision it supports", "The data sources and collection methodology", "A list of the analytical tools that were used", "The caveats and limitations of the approach"],
+      "correct_index": 0,
+      "explanation": "Leading with the conclusion lets the reader decide how much of the supporting detail they need to read."
+    },
+    {
+      "question_id": "fb_stake_l2_1", "skill_id": "stakeholder_communication", "difficulty": "L2",
+      "stem": "A stakeholder asks for a number your data cannot support with confidence. What is the most effective response?",
+      "options": ["Give the range you can defend and state what would narrow it", "Provide the point estimate and omit the uncertainty", "Decline until better data becomes available", "Redirect the request to a different team"],
+      "correct_index": 0,
+      "explanation": "A defensible range plus the path to a tighter one keeps the decision moving without overstating what you know."
+    },
+    {
+      "question_id": "fb_stake_l3_1", "skill_id": "stakeholder_communication", "difficulty": "L3",
+      "stem": "Two teams read the same dashboard and reach opposite conclusions because each filters it differently by default. What is the most durable fix?",
+      "options": ["Agree a shared metric definition and encode it upstream of the dashboard", "Give each team a separate dashboard with its own filters", "Add a written note explaining both interpretations", "Remove the filter controls from the dashboard entirely"],
+      "correct_index": 0,
+      "explanation": "Definitional disagreement recurs wherever the metric is used, so the fix belongs in the shared definition, not the view."
+    },
+
+    {
+      "question_id": "fb_datamodel_l1_1", "skill_id": "data_modeling", "difficulty": "L1",
+      "stem": "In a star schema, what does the fact table primarily hold?",
+      "options": ["Measurable events with foreign keys to descriptive dimensions", "Descriptive attributes such as customer names and regions", "Indexes and query optimisation metadata", "Historical versions of the dimension tables"],
+      "correct_index": 0,
+      "explanation": "Fact tables store the measurable events at a defined grain; the descriptive context lives in dimension tables."
+    },
+    {
+      "question_id": "fb_datamodel_l2_1", "skill_id": "data_modeling", "difficulty": "L2",
+      "stem": "Sales totals inflate whenever an analyst joins the orders fact to a product dimension that has one row per product per price change. What is wrong?",
+      "options": ["The join fans out because the dimension is not unique at product grain", "The fact table is missing a primary key constraint", "Sales amounts should be stored as integers rather than decimals", "The dimension table needs an additional descriptive column"],
+      "correct_index": 0,
+      "explanation": "Joining to a non-unique key duplicates fact rows, and summing after the fan-out multiplies the measure."
+    },
+    {
+      "question_id": "fb_datamodel_l3_1", "skill_id": "data_modeling", "difficulty": "L3",
+      "stem": "Finance needs revenue restated as it was reported at the time, but the customer-region dimension is overwritten on change. What modelling change is required?",
+      "options": ["Track the dimension as slowly changing with effective date ranges", "Add a surrogate key to the existing dimension table", "Partition the fact table by report date", "Materialise the current join as a wide reporting table"],
+      "correct_index": 0,
+      "explanation": "Point-in-time restatement requires retaining prior attribute versions with validity windows rather than overwriting them."
+    }
+  ]
+}

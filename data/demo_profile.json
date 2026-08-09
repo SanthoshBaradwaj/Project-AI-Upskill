@@ -1,0 +1,127 @@
+{
+  "_comment": "Demo insurance (P0-15). Fully pre-computed profile and preferences; the rest of the flow runs the real deterministic engines against the hand-verified question bank, so a demo run has ZERO live API dependency. Chosen to produce three visible corrections in one run: (1) an inflated Statistics claim that verifies lower, (2) an aspirational target far out of reach with a bridge, (3) a real sponsorship + location filter, including one role that demotes to zero.",
+  "label": "Priya M. — Senior Financial Analyst, 6 years",
+  "resume_text": "PRIYA M.\nSenior Financial Analyst | Portland, OR\n\nSUMMARY\nSix years building forecasting and reporting infrastructure for a mid-size insurance carrier. Advanced statistics, SQL, and Python. Comfortable owning analysis end to end and presenting to executives.\n\nEXPERIENCE\n\nSenior Financial Analyst, Cascade Mutual Insurance (2021 - present)\n- Led the quarterly reserving analysis, redesigning the loss-development model and presenting results to the CFO and the reserving committee each quarter.\n- Built and owned the claims-severity forecasting model in SQL and Excel, cutting the monthly close cycle from nine days to four.\n- Designed and ran a controlled pricing experiment across four regional books, defining the holdout and the success criteria with the actuarial team.\n- Created the executive reporting pack used in every board meeting since 2022.\n\nFinancial Analyst, Cascade Mutual Insurance (2019 - 2021)\n- Automated the reconciliation process between the policy administration system and the general ledger, removing roughly 20 hours of manual work per month.\n- Partnered with the data warehouse team to define the dimensional model for the claims mart.\n\nAnalyst, Northwest Regional Bank (2018 - 2019)\n- Produced monthly portfolio performance reporting for the commercial lending group.\n\nSKILLS\nAdvanced Statistics, SQL, Python, Excel, Tableau, Power BI, financial modeling, regulatory compliance, stakeholder management\n\nEDUCATION\nB.S. Economics, University of Oregon (2018)\nPython for Data Science, online certificate (2019)",
+  "profile": {
+    "inferred_domain": "insurance and financial services",
+    "skills": [
+      {
+        "skill_id": "statistics",
+        "display_name": "Statistics",
+        "category": "technical",
+        "claimed_level": 3,
+        "evidence_snippet": "Advanced Statistics, SQL, Python, Excel, Tableau, Power BI, financial modeling, regulatory compliance, stakeholder management",
+        "evidence_tier": "asserted",
+        "years_since_last_use": 0
+      },
+      {
+        "skill_id": "python",
+        "display_name": "Python",
+        "category": "technical",
+        "claimed_level": 3,
+        "evidence_snippet": "Python for Data Science, online certificate (2019)",
+        "evidence_tier": "asserted",
+        "years_since_last_use": 6
+      },
+      {
+        "skill_id": "sql",
+        "display_name": "SQL",
+        "category": "technical",
+        "claimed_level": 3,
+        "evidence_snippet": "Built and owned the claims-severity forecasting model in SQL and Excel, cutting the monthly close cycle from nine days to four.",
+        "evidence_tier": "evidenced",
+        "years_since_last_use": 0
+      },
+      {
+        "skill_id": "experimental_design",
+        "display_name": "Experimental Design",
+        "category": "transferable",
+        "claimed_level": 3,
+        "evidence_snippet": "Designed and ran a controlled pricing experiment across four regional books, defining the holdout and the success criteria with the actuarial team.",
+        "evidence_tier": "evidenced",
+        "years_since_last_use": 0
+      },
+      {
+        "skill_id": "stakeholder_communication",
+        "display_name": "Stakeholder Communication",
+        "category": "transferable",
+        "claimed_level": 3,
+        "evidence_snippet": "Led the quarterly reserving analysis, redesigning the loss-development model and presenting results to the CFO and the reserving committee each quarter.",
+        "evidence_tier": "evidenced",
+        "years_since_last_use": 0
+      },
+      {
+        "skill_id": "data_modeling",
+        "display_name": "Analytics Data Modeling",
+        "category": "technical",
+        "claimed_level": 2,
+        "evidence_snippet": "Partnered with the data warehouse team to define the dimensional model for the claims mart.",
+        "evidence_tier": "evidenced",
+        "years_since_last_use": 4
+      },
+      {
+        "skill_id": "bi_tooling",
+        "display_name": "BI Tooling (Tableau / Power BI / Looker)",
+        "category": "technical",
+        "claimed_level": 1,
+        "evidence_snippet": "Advanced Statistics, SQL, Python, Excel, Tableau, Power BI, financial modeling, regulatory compliance, stakeholder management",
+        "evidence_tier": "asserted",
+        "years_since_last_use": 0
+      },
+      {
+        "skill_id": "excel_modeling",
+        "display_name": "Excel / Spreadsheet Modeling",
+        "category": "technical",
+        "claimed_level": 3,
+        "evidence_snippet": "Built and owned the claims-severity forecasting model in SQL and Excel, cutting the monthly close cycle from nine days to four.",
+        "evidence_tier": "evidenced",
+        "years_since_last_use": 0
+      },
+      {
+        "skill_id": "quantitative_reporting",
+        "display_name": "Quantitative Reporting",
+        "category": "transferable",
+        "claimed_level": 3,
+        "evidence_snippet": "Created the executive reporting pack used in every board meeting since 2022.",
+        "evidence_tier": "evidenced",
+        "years_since_last_use": 0
+      },
+      {
+        "skill_id": "process_improvement",
+        "display_name": "Process Improvement",
+        "category": "transferable",
+        "claimed_level": 3,
+        "evidence_snippet": "Automated the reconciliation process between the policy administration system and the general ledger, removing roughly 20 hours of manual work per month.",
+        "evidence_tier": "evidenced",
+        "years_since_last_use": 4
+      },
+      {
+        "skill_id": "regulatory_literacy",
+        "display_name": "Regulatory Literacy",
+        "category": "transferable",
+        "claimed_level": 1,
+        "evidence_snippet": "Advanced Statistics, SQL, Python, Excel, Tableau, Power BI, financial modeling, regulatory compliance, stakeholder management",
+        "evidence_tier": "asserted",
+        "years_since_last_use": 0
+      },
+      {
+        "skill_id": "domain_expertise",
+        "display_name": "Domain Expertise",
+        "category": "transferable",
+        "claimed_level": 3,
+        "evidence_snippet": "Six years building forecasting and reporting infrastructure for a mid-size insurance carrier.",
+        "evidence_tier": "evidenced",
+        "years_since_last_use": 0
+      }
+    ]
+  },
+  "preferences": {
+    "locations": ["portland"],
+    "remote_only": false,
+    "sponsorship": "need_sponsorship",
+    "visa_detail": "H-1B transfer",
+    "preferred_roles": ["MLOps Engineer"],
+    "preferred_companies": ["Anthropic", "Scale AI"],
+    "weekly_hours": 8
+  }
+}

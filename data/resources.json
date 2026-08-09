@@ -1,0 +1,320 @@
+{
+  "_comment": "Curated resource library backing the deterministic pathway fallback. Every entry is a real, free-or-cheap, currently-published resource (Prompt 3 Rule 6: do not recommend anything you are not confident exists). Each skill carries three DISJOINT options so the three pathways never converge on the same reading list.",
+  "resources": {
+    "python": {
+      "sprint": { "resource": "Automate the Boring Stuff with Python, chapters 1-6 (free online)", "hours": 18 },
+      "deep": { "resource": "Python for Everybody Specialization, Courses 1-3 (Coursera, free audit)", "hours": 40 },
+      "lateral": { "resource": "Real Python: Pandas for Data Analysis learning path", "hours": 22 }
+    },
+    "sql": {
+      "sprint": { "resource": "SQLBolt, all interactive lessons (free)", "hours": 10 },
+      "deep": { "resource": "Use The Index, Luke! - full guide to SQL indexing (free online)", "hours": 24 },
+      "lateral": { "resource": "Mode Analytics SQL Tutorial, Intermediate and Advanced tracks", "hours": 16 }
+    },
+    "statistics": {
+      "sprint": { "resource": "StatQuest with Josh Starmer - Statistics Fundamentals playlist", "hours": 14 },
+      "deep": { "resource": "OpenIntro Statistics, 4th edition, chapters 1-8 with exercises (free PDF)", "hours": 45 },
+      "lateral": { "resource": "Think Stats, 2nd edition by Allen Downey (free PDF)", "hours": 25 }
+    },
+    "probability": {
+      "sprint": { "resource": "Khan Academy: Probability unit", "hours": 12 },
+      "deep": { "resource": "Introduction to Probability (Blitzstein), Harvard Stat 110 lectures (free)", "hours": 45 },
+      "lateral": { "resource": "Seeing Theory: visual introduction to probability (Brown, free)", "hours": 8 }
+    },
+    "linear_algebra": {
+      "sprint": { "resource": "3Blue1Brown: Essence of Linear Algebra series", "hours": 8 },
+      "deep": { "resource": "MIT 18.06 Linear Algebra, Strang (OCW, free)", "hours": 50 },
+      "lateral": { "resource": "Mathematics for Machine Learning, Part 1 (Coursera, free audit)", "hours": 22 }
+    },
+    "machine_learning": {
+      "sprint": { "resource": "scikit-learn User Guide: supervised learning tutorials", "hours": 20 },
+      "deep": { "resource": "Machine Learning Specialization by Andrew Ng (Coursera, free audit)", "hours": 55 },
+      "lateral": { "resource": "Hands-On Machine Learning with Scikit-Learn (Geron), chapters 1-6", "hours": 30 }
+    },
+    "deep_learning": {
+      "sprint": { "resource": "fast.ai Practical Deep Learning for Coders, Lessons 1-4", "hours": 24 },
+      "deep": { "resource": "Deep Learning Specialization (deeplearning.ai), Courses 1-3", "hours": 60 },
+      "lateral": { "resource": "Karpathy's Neural Networks: Zero to Hero, videos 1-4", "hours": 20 }
+    },
+    "nlp": {
+      "sprint": { "resource": "Hugging Face NLP Course, chapters 1-3 (free)", "hours": 16 },
+      "deep": { "resource": "Stanford CS224N: NLP with Deep Learning lectures (free)", "hours": 50 },
+      "lateral": { "resource": "spaCy Advanced NLP course (free)", "hours": 14 }
+    },
+    "llm_application_dev": {
+      "sprint": { "resource": "Anthropic Claude Docs quickstart and Messages API guide", "hours": 10 },
+      "deep": { "resource": "Anthropic Cookbook (GitHub) - work through tool use and agents notebooks", "hours": 30 },
+      "lateral": { "resource": "Anthropic Docs: building with Claude in your existing stack", "hours": 14 }
+    },
+    "prompt_engineering": {
+      "sprint": { "resource": "Anthropic Prompt Engineering Overview (docs)", "hours": 6 },
+      "deep": { "resource": "Anthropic Prompt Engineering Interactive Tutorial (GitHub, all chapters)", "hours": 18 },
+      "lateral": { "resource": "Anthropic Docs: prompt templates and variables guide", "hours": 8 }
+    },
+    "rag_systems": {
+      "sprint": { "resource": "Pinecone Learning Center: Retrieval Augmented Generation guide", "hours": 10 },
+      "deep": { "resource": "LlamaIndex documentation: full Understanding tutorial series", "hours": 28 },
+      "lateral": { "resource": "Anthropic Cookbook: contextual retrieval notebook", "hours": 12 }
+    },
+    "model_evaluation": {
+      "sprint": { "resource": "Google ML Crash Course: Classification and evaluation modules", "hours": 8 },
+      "deep": { "resource": "Anthropic Docs: create strong empirical evaluations", "hours": 20 },
+      "lateral": { "resource": "Evidently AI open-source docs: evaluation metrics guides", "hours": 12 }
+    },
+    "feature_engineering": {
+      "sprint": { "resource": "Kaggle Learn: Feature Engineering course (free)", "hours": 8 },
+      "deep": { "resource": "Feature Engineering for Machine Learning (Zheng and Casari)", "hours": 25 },
+      "lateral": { "resource": "scikit-learn User Guide: preprocessing and pipelines", "hours": 12 }
+    },
+    "data_visualization": {
+      "sprint": { "resource": "Kaggle Learn: Data Visualization course (free)", "hours": 8 },
+      "deep": { "resource": "Fundamentals of Data Visualization by Claus Wilke (free online)", "hours": 22 },
+      "lateral": { "resource": "Storytelling with Data by Cole Nussbaumer Knaflic", "hours": 14 }
+    },
+    "bi_tooling": {
+      "sprint": { "resource": "Tableau Public: free training videos, Getting Started series", "hours": 10 },
+      "deep": { "resource": "Microsoft Power BI Guided Learning, full path (free)", "hours": 28 },
+      "lateral": { "resource": "Looker Studio Help Center: report building tutorials", "hours": 10 }
+    },
+    "data_modeling": {
+      "sprint": { "resource": "dbt Learn: Analytics Engineering Fundamentals (free)", "hours": 12 },
+      "deep": { "resource": "The Data Warehouse Toolkit by Ralph Kimball, chapters 1-7", "hours": 35 },
+      "lateral": { "resource": "dbt Developer Hub: guide to dimensional modeling", "hours": 14 }
+    },
+    "dbt": {
+      "sprint": { "resource": "dbt Fundamentals course (dbt Learn, free)", "hours": 12 },
+      "deep": { "resource": "dbt Learn: Advanced Materializations and Jinja courses", "hours": 26 },
+      "lateral": { "resource": "dbt Developer Hub: best practices guide", "hours": 10 }
+    },
+    "etl_pipelines": {
+      "sprint": { "resource": "DataTalks.Club Data Engineering Zoomcamp, weeks 1-2 (free)", "hours": 16 },
+      "deep": { "resource": "DataTalks.Club Data Engineering Zoomcamp, full course (free)", "hours": 55 },
+      "lateral": { "resource": "Airbyte and Fivetran docs: ELT patterns for analysts", "hours": 12 }
+    },
+    "data_orchestration": {
+      "sprint": { "resource": "Astronomer: Airflow Fundamentals learning path (free)", "hours": 12 },
+      "deep": { "resource": "Apache Airflow documentation: full Core Concepts and Best Practices", "hours": 30 },
+      "lateral": { "resource": "Dagster University: Dagster Essentials (free)", "hours": 14 }
+    },
+    "distributed_data": {
+      "sprint": { "resource": "Databricks Academy: Apache Spark Programming fundamentals", "hours": 14 },
+      "deep": { "resource": "Learning Spark, 2nd edition (free from Databricks)", "hours": 35 },
+      "lateral": { "resource": "Spark: The Definitive Guide, structured APIs chapters", "hours": 20 }
+    },
+    "data_warehousing": {
+      "sprint": { "resource": "Snowflake Hands-On Essentials: Data Warehousing Workshop (free)", "hours": 12 },
+      "deep": { "resource": "The Data Warehouse Toolkit by Kimball, full read with exercises", "hours": 40 },
+      "lateral": { "resource": "BigQuery documentation: best practices for analysts", "hours": 12 }
+    },
+    "software_engineering": {
+      "sprint": { "resource": "MIT: The Missing Semester of Your CS Education (free)", "hours": 14 },
+      "deep": { "resource": "Designing Data-Intensive Applications by Martin Kleppmann, chapters 1-6", "hours": 45 },
+      "lateral": { "resource": "Google Engineering Practices: code review documentation (free)", "hours": 10 }
+    },
+    "version_control": {
+      "sprint": { "resource": "Learn Git Branching, all interactive levels (free)", "hours": 6 },
+      "deep": { "resource": "Pro Git by Chacon and Straub, chapters 1-7 (free book)", "hours": 20 },
+      "lateral": { "resource": "GitHub Skills: collaboration and pull request courses (free)", "hours": 8 }
+    },
+    "testing_practice": {
+      "sprint": { "resource": "Real Python: Getting Started with Testing in Python", "hours": 8 },
+      "deep": { "resource": "Python Testing with pytest by Brian Okken", "hours": 24 },
+      "lateral": { "resource": "pytest documentation: How-to guides and fixtures", "hours": 10 }
+    },
+    "api_development": {
+      "sprint": { "resource": "FastAPI documentation: full Tutorial - User Guide", "hours": 14 },
+      "deep": { "resource": "Designing Web APIs (Jin, Sahni, Shevat) plus FastAPI Advanced User Guide", "hours": 30 },
+      "lateral": { "resource": "Postman Learning Center: API fundamentals path", "hours": 10 }
+    },
+    "cloud_deployment": {
+      "sprint": { "resource": "AWS Cloud Practitioner Essentials (AWS Skill Builder, free)", "hours": 14 },
+      "deep": { "resource": "AWS Solutions Architect Associate path (Skill Builder, free tier)", "hours": 50 },
+      "lateral": { "resource": "Google Cloud Skills Boost: Data Engineer learning path", "hours": 24 }
+    },
+    "containerization": {
+      "sprint": { "resource": "Docker: Getting Started tutorial (official docs)", "hours": 8 },
+      "deep": { "resource": "Docker documentation: full Build, Run and Compose guides", "hours": 24 },
+      "lateral": { "resource": "Play with Docker Classroom: developer stage labs (free)", "hours": 10 }
+    },
+    "mlops": {
+      "sprint": { "resource": "Made With ML: MLOps course, Design and Development sections (free)", "hours": 18 },
+      "deep": { "resource": "DataTalks.Club MLOps Zoomcamp, full course (free)", "hours": 55 },
+      "lateral": { "resource": "MLflow documentation: tracking and model registry guides", "hours": 16 }
+    },
+    "model_monitoring": {
+      "sprint": { "resource": "Evidently AI: ML monitoring tutorials (free)", "hours": 10 },
+      "deep": { "resource": "Made With ML: Production and Monitoring sections (free)", "hours": 26 },
+      "lateral": { "resource": "WhyLabs open-source whylogs documentation", "hours": 12 }
+    },
+    "ci_cd": {
+      "sprint": { "resource": "GitHub Actions documentation: quickstart and workflow syntax", "hours": 8 },
+      "deep": { "resource": "Continuous Delivery by Humble and Farley, chapters 1-8", "hours": 30 },
+      "lateral": { "resource": "GitHub Skills: Hello GitHub Actions and CI courses (free)", "hours": 8 }
+    },
+    "system_design": {
+      "sprint": { "resource": "The System Design Primer (GitHub, free) - core topics section", "hours": 16 },
+      "deep": { "resource": "Designing Data-Intensive Applications by Kleppmann, full read", "hours": 55 },
+      "lateral": { "resource": "AWS Architecture Center: reference architectures for ML workloads", "hours": 14 }
+    },
+    "ai_safety_evaluation": {
+      "sprint": { "resource": "Anthropic Docs: reducing hallucinations and mitigating jailbreaks", "hours": 8 },
+      "deep": { "resource": "Anthropic Responsible Scaling Policy plus published safety research", "hours": 26 },
+      "lateral": { "resource": "OWASP Top 10 for Large Language Model Applications (free)", "hours": 10 }
+    },
+    "ai_governance": {
+      "sprint": { "resource": "NIST AI Risk Management Framework 1.0 (free)", "hours": 12 },
+      "deep": { "resource": "EU AI Act full text with the official EU AI Act Explorer (free)", "hours": 32 },
+      "lateral": { "resource": "ISO/IEC 42001 overview materials and NIST AI RMF Playbook", "hours": 16 }
+    },
+    "privacy_compliance": {
+      "sprint": { "resource": "IAPP: GDPR fundamentals free resource library", "hours": 10 },
+      "deep": { "resource": "IAPP CIPP/E body-of-knowledge self-study materials", "hours": 35 },
+      "lateral": { "resource": "California Privacy Protection Agency: CCPA/CPRA regulations guide", "hours": 12 }
+    },
+    "regulatory_literacy": {
+      "sprint": { "resource": "Brookings and Stanford HAI AI policy briefs (free)", "hours": 8 },
+      "deep": { "resource": "OECD AI Policy Observatory: national strategy comparison materials", "hours": 24 },
+      "lateral": { "resource": "Your own sector's regulator: published AI guidance and consultations", "hours": 12 }
+    },
+    "conversation_design": {
+      "sprint": { "resource": "Google Conversation Design Guidelines (free)", "hours": 8 },
+      "deep": { "resource": "Conversational Design by Erika Hall plus Designing Bots by Amir Shevat", "hours": 26 },
+      "lateral": { "resource": "Voiceflow Learn: conversation design certification track (free)", "hours": 14 }
+    },
+    "information_architecture": {
+      "sprint": { "resource": "Nielsen Norman Group: information architecture article series", "hours": 8 },
+      "deep": { "resource": "Information Architecture for the Web and Beyond (Rosenfeld, Morville)", "hours": 28 },
+      "lateral": { "resource": "Write the Docs: documentation structure guides (free)", "hours": 10 }
+    },
+    "technical_writing": {
+      "sprint": { "resource": "Google Technical Writing One (free course)", "hours": 8 },
+      "deep": { "resource": "Google Technical Writing One and Two, plus Docs for Developers (book)", "hours": 28 },
+      "lateral": { "resource": "Write the Docs: guide to writing docs for your own product", "hours": 12 }
+    },
+    "experimental_design": {
+      "sprint": { "resource": "Udacity A/B Testing course (free)", "hours": 12 },
+      "deep": { "resource": "Trustworthy Online Controlled Experiments by Kohavi, Tang and Xu", "hours": 32 },
+      "lateral": { "resource": "Netflix and Airbnb engineering blogs: experimentation platform series", "hours": 12 }
+    },
+    "causal_reasoning": {
+      "sprint": { "resource": "The Book of Why by Judea Pearl (accessible introduction)", "hours": 14 },
+      "deep": { "resource": "Causal Inference: The Mixtape by Scott Cunningham (free online)", "hours": 40 },
+      "lateral": { "resource": "Causal Inference for The Brave and True (free online)", "hours": 22 }
+    },
+    "stakeholder_communication": {
+      "sprint": { "resource": "The Pyramid Principle by Barbara Minto, core chapters", "hours": 10 },
+      "deep": { "resource": "Storytelling with Data by Knaflic plus its companion workbook", "hours": 26 },
+      "lateral": { "resource": "HBR Guide to Persuasive Presentations", "hours": 12 }
+    },
+    "requirements_elicitation": {
+      "sprint": { "resource": "Continuous Discovery Habits by Teresa Torres, chapters 1-5", "hours": 10 },
+      "deep": { "resource": "Software Requirements by Karl Wiegers, chapters 1-10", "hours": 28 },
+      "lateral": { "resource": "Interviewing Users by Steve Portigal", "hours": 12 }
+    },
+    "roadmapping": {
+      "sprint": { "resource": "Inspired by Marty Cagan, product discovery chapters", "hours": 12 },
+      "deep": { "resource": "Escaping the Build Trap by Melissa Perri plus Inspired, full read", "hours": 30 },
+      "lateral": { "resource": "SVPG articles: product strategy and prioritisation essays (free)", "hours": 10 }
+    },
+    "user_research": {
+      "sprint": { "resource": "Nielsen Norman Group: user research methods articles (free)", "hours": 8 },
+      "deep": { "resource": "Just Enough Research by Erika Hall plus Interviewing Users", "hours": 26 },
+      "lateral": { "resource": "Continuous Discovery Habits by Teresa Torres", "hours": 14 }
+    },
+    "cross_functional_leadership": {
+      "sprint": { "resource": "The Making of a Manager by Julie Zhuo, chapters 1-5", "hours": 10 },
+      "deep": { "resource": "An Elegant Puzzle by Will Larson", "hours": 24 },
+      "lateral": { "resource": "Team Topologies by Skelton and Pais", "hours": 14 }
+    },
+    "written_communication": {
+      "sprint": { "resource": "Google Technical Writing One (free course)", "hours": 8 },
+      "deep": { "resource": "On Writing Well by William Zinsser plus Google Technical Writing Two", "hours": 24 },
+      "lateral": { "resource": "Amazon six-pager and PR/FAQ writing guides (public write-ups)", "hours": 10 }
+    },
+    "quantitative_reporting": {
+      "sprint": { "resource": "Kaggle Learn: Data Visualization plus Storytelling with Data, part 1", "hours": 10 },
+      "deep": { "resource": "The Functional Art by Alberto Cairo", "hours": 24 },
+      "lateral": { "resource": "Practical Tableau by Ryan Sleeper, reporting chapters", "hours": 14 }
+    },
+    "critical_analysis": {
+      "sprint": { "resource": "Calling Bullshit (University of Washington course, free videos)", "hours": 10 },
+      "deep": { "resource": "Thinking, Fast and Slow by Daniel Kahneman", "hours": 26 },
+      "lateral": { "resource": "Superforecasting by Tetlock and Gardner", "hours": 14 }
+    },
+    "structured_decomposition": {
+      "sprint": { "resource": "The Pyramid Principle by Minto, structuring chapters", "hours": 10 },
+      "deep": { "resource": "The McKinsey Way plus Problem Solving 101 by Ken Watanabe", "hours": 22 },
+      "lateral": { "resource": "Bulletproof Problem Solving by Conn and McLean", "hours": 14 }
+    },
+    "systems_thinking": {
+      "sprint": { "resource": "Thinking in Systems by Donella Meadows, chapters 1-3", "hours": 10 },
+      "deep": { "resource": "Thinking in Systems, full read, plus The Fifth Discipline", "hours": 28 },
+      "lateral": { "resource": "Team Topologies by Skelton and Pais", "hours": 14 }
+    },
+    "algorithmic_intuition": {
+      "sprint": { "resource": "Grokking Algorithms by Aditya Bhargava", "hours": 14 },
+      "deep": { "resource": "MIT 6.006 Introduction to Algorithms (OCW, free)", "hours": 45 },
+      "lateral": { "resource": "NeetCode: algorithm patterns roadmap (free tier)", "hours": 20 }
+    },
+    "project_management": {
+      "sprint": { "resource": "Atlassian Agile Coach: scrum and kanban guides (free)", "hours": 8 },
+      "deep": { "resource": "Google Project Management Certificate, Courses 1-3 (free audit)", "hours": 32 },
+      "lateral": { "resource": "Shape Up by Basecamp (free online)", "hours": 10 }
+    },
+    "risk_assessment": {
+      "sprint": { "resource": "NIST AI Risk Management Framework, Core section (free)", "hours": 8 },
+      "deep": { "resource": "How to Measure Anything in Cybersecurity Risk by Hubbard and Seiersen", "hours": 28 },
+      "lateral": { "resource": "Your sector's published risk framework plus NIST AI RMF Playbook", "hours": 12 }
+    },
+    "vendor_evaluation": {
+      "sprint": { "resource": "Anthropic Docs: model comparison and pricing pages", "hours": 5 },
+      "deep": { "resource": "Build a structured vendor scorecard from Gartner public criteria", "hours": 18 },
+      "lateral": { "resource": "Model provider docs: Anthropic, plus your cloud's model catalogue", "hours": 10 }
+    },
+    "process_improvement": {
+      "sprint": { "resource": "The Lean Startup by Eric Ries, build-measure-learn chapters", "hours": 10 },
+      "deep": { "resource": "The Toyota Way by Jeffrey Liker", "hours": 26 },
+      "lateral": { "resource": "Accelerate by Forsgren, Humble and Kim", "hours": 12 }
+    },
+    "domain_expertise": {
+      "sprint": { "resource": "Your industry's leading trade publication: last 12 months of AI coverage", "hours": 10 },
+      "deep": { "resource": "A graduate survey text in your domain plus its current regulatory guidance", "hours": 35 },
+      "lateral": { "resource": "Your employer's own internal documentation and data dictionary", "hours": 12 }
+    },
+    "teaching_mentoring": {
+      "sprint": { "resource": "Make It Stick by Brown, Roediger and McDaniel", "hours": 10 },
+      "deep": { "resource": "The Programmer's Brain by Felienne Hermans", "hours": 22 },
+      "lateral": { "resource": "Run an internal lunch-and-learn series in your current team", "hours": 12 }
+    },
+    "excel_modeling": {
+      "sprint": { "resource": "ExcelJet: formula and function reference course (free)", "hours": 8 },
+      "deep": { "resource": "Financial Modeling by Simon Benninga, core chapters", "hours": 30 },
+      "lateral": { "resource": "Microsoft Learn: Excel data analysis learning path (free)", "hours": 12 }
+    },
+    "r_programming": {
+      "sprint": { "resource": "R for Data Science, 2nd edition, chapters 1-5 (free online)", "hours": 14 },
+      "deep": { "resource": "R for Data Science, full read, plus Advanced R (both free online)", "hours": 45 },
+      "lateral": { "resource": "Tidyverse documentation: dplyr and ggplot2 guides", "hours": 16 }
+    },
+    "calculus": {
+      "sprint": { "resource": "3Blue1Brown: Essence of Calculus series", "hours": 8 },
+      "deep": { "resource": "MIT 18.01 Single Variable Calculus (OCW, free)", "hours": 45 },
+      "lateral": { "resource": "Mathematics for Machine Learning, Part 2 (Coursera, free audit)", "hours": 22 }
+    },
+    "computer_vision": {
+      "sprint": { "resource": "fast.ai Practical Deep Learning, Lessons 1-3 (vision focus)", "hours": 18 },
+      "deep": { "resource": "Stanford CS231n: Convolutional Neural Networks lectures (free)", "hours": 50 },
+      "lateral": { "resource": "Hugging Face Computer Vision Course (free)", "hours": 20 }
+    },
+    "data_wrangling": {
+      "sprint": { "resource": "Kaggle Learn: Pandas and Data Cleaning courses (free)", "hours": 10 },
+      "deep": { "resource": "Python for Data Analysis, 3rd edition by Wes McKinney (free online)", "hours": 32 },
+      "lateral": { "resource": "Polars user guide: transformations and lazy API", "hours": 14 }
+    }
+  },
+  "generic": {
+    "sprint": { "resource": "A focused introductory course in this skill, then one small applied exercise", "hours": 12 },
+    "deep": { "resource": "A standard textbook or university course in this skill, worked end to end", "hours": 35 },
+    "lateral": { "resource": "Your current employer's own tooling and documentation for this skill", "hours": 14 }
+  }
+}
